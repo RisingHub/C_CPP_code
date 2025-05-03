@@ -12,7 +12,7 @@ int main()
         scanf("%d",&a[i]);
     }
     printf("The key num is in the %dth of arr.\n",bin_search(a,1,n,k));
-    
+    //.
     
     return 0;
 }
