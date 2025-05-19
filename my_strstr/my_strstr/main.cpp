@@ -1,33 +1,34 @@
 #include <stdio.h>
-
+#include <string.h>
 char* my_strstr(const char* str1, const char* str2)
 {
-    char* p = (char*)str1;
-    char* s1 = (char*)str1;
-    char* s2 = (char*)str2;
-    
-    if(!*str2)
-        return (char*)str1;
-    while(*p)
+    char* pc = (char*)str1;
+    char *s1, *s2;
+    while(*pc)
     {
-        s1 = p;
+        s1 = pc;
         s2 = (char*)str2;
-        while(*s1 && *s2 && !(*s1-*s2))
+        
+        while(*s1 == *s2 && *s1 && *s2)
         {
             s1++;
             s2++;
         }
-        if(! *s2)
-            return p;
-        p++;
+        if(!*s2) return pc;
+        
+        pc++;
     }
+    
     return (NULL);
 }
 int main()
 {
-    char str1[] = "hello";
-    char str2[] = "aa";
-    printf("%p\n", my_strstr(str1, str2));
-    
+    char str[] ="This is a simple string";
+    char * pch;
+    //找到simple位置
+    pch = my_strstr (str,"simple");
+    if (pch != NULL)
+        strncpy (pch,"sample",6);//将simple用sample代替
+    puts (str);
     return 0;
 }
